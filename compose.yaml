@@ -1,0 +1,37 @@
+services:
+  postgres:
+    container_name: postgres-chat
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - 'POSTGRES_DB=chat-box'
+      - 'POSTGRES_PASSWORD=123456'
+      - 'POSTGRES_USER=du2du'
+    volumes:
+      - /var/lib/chat-box/postgresql/data
+    ports:
+      - '5432'
+    networks:
+      - chatboxNetwork
+  pgadmin:
+    container_name: pgadmin-chat
+    restart: always
+    image: 'dpage/pgadmin4'
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=eduardohilario.eha@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      - "8081:80"
+    networks:
+      - chatboxNetwork
+    depends_on:
+      - postgres
+networks:
+  chatboxNetwork:
+    driver: bridge
+  # chatBox:
+  #   image: 'chat-box-du2du:latest'
+  #   ports:
+  #     - '8080:8080'
+  #   networks:
+  #     - chat-network
