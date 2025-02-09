@@ -1,7 +1,9 @@
 package com.du2du.chat_box.model.entity.impl;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +13,6 @@ import com.du2du.chat_box.model.entity.AbstractEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,7 @@ import lombok.Setter;
 @Table(name = "tbuser")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class User extends AbstractEntity implements UserDetails {
 
   private String name;
@@ -59,6 +58,11 @@ public class User extends AbstractEntity implements UserDetails {
     return UserDetails.super.isEnabled();
   }
 
-
+  @Builder
+  public User(UUID uuid, LocalDateTime createdAt, LocalDateTime updatedAt, String name, String password) {
+    super(uuid, createdAt, updatedAt);
+    this.name = name;
+    this.password = password;
+  }
 
 }
