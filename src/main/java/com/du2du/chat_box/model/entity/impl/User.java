@@ -1,20 +1,21 @@
-package com.du2du.chat_box.model.entity;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+package com.du2du.chat_box.model.entity.impl;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.du2du.chat_box.model.entity.AbstractEntity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tbuser")
@@ -22,9 +23,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements UserDetails {
-  @Id
-  private UUID uuid;
+@Builder
+public class User extends AbstractEntity implements UserDetails {
+
   private String name;
   private String password;
 
@@ -57,5 +58,7 @@ public class User implements UserDetails {
   public boolean isEnabled() {
     return UserDetails.super.isEnabled();
   }
+
+
 
 }
