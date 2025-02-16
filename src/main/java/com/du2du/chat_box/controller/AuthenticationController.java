@@ -11,7 +11,7 @@ import com.du2du.chat_box.model.dto.form.LoginFormDTO;
 import com.du2du.chat_box.model.service.AuthenticationService;
 
 @Controller
-@RequestMapping("/auth")
+@RequestMapping("/v4/auth")
 public class AuthenticationController {
 
   @Autowired

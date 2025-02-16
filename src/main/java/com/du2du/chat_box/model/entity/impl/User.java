@@ -1,5 +1,6 @@
 package com.du2du.chat_box.model.entity.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -13,20 +14,25 @@ import com.du2du.chat_box.model.entity.AbstractEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name = "tbuser")
 @Getter
 @Setter
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User extends AbstractEntity implements UserDetails {
 
-  private String name;
-  private String password;
+  String name;
+  String profilePicture;
+  String password;
+  LocalDate birthDate;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

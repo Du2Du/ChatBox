@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.du2du.chat_box.model.dto.form.LoginFormDTO;
 import com.du2du.chat_box.model.entity.impl.User;
@@ -54,6 +55,7 @@ public class AuthenticationService {
     }
   }
 
+  @Transactional
   public User registerUser(LoginFormDTO dto) {
     User entity = userRespository.save(User.builder()
         .name(dto.getName())

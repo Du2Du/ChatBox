@@ -1,8 +1,8 @@
 package com.du2du.chat_box.model.dto.form;
 
-import org.springframework.beans.factory.annotation.Value;
-
-import com.password4j.Password;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.UUID;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LoginFormDTO {
+public class UserFormDTO {
+  UUID uuid;
   String name;
-  String password;
+  String profilePicture;
+  LocalDate birthDate;
 }
