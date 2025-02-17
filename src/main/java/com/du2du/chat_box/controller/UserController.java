@@ -16,7 +16,7 @@ import com.du2du.chat_box.model.service.UserService;
 
 
 @Controller
-@RequestMapping("/v4/user")
+@RequestMapping("/v1/user")
 public class UserController {
 
   @Autowired

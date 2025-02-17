@@ -12,11 +12,12 @@ public class WebsocketConfiguration implements WebSocketMessageBrokerConfigurer 
 
   @Override
   public void registerStompEndpoints(StompEndpointRegistry registry) {
-    WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
+    registry.addEndpoint("/v1/chat-channel").withSockJS();
   }
 
   @Override
   public void configureMessageBroker(MessageBrokerRegistry registry) {
-    WebSocketMessageBrokerConfigurer.super.configureMessageBroker(registry);
+    registry.enableSimpleBroker("/chat");
+    registry.setApplicationDestinationPrefixes("/app");
   }
 }
